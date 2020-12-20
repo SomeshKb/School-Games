@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DogBreedClassifierComponent } from './dog-breed-classifier.component';
+import { ContinentComponent } from './continent.component';
 
-describe('DogBreedClassifierComponent', () => {
-  let component: DogBreedClassifierComponent;
-  let fixture: ComponentFixture<DogBreedClassifierComponent>;
+describe('ContinentComponent', () => {
+  let component: ContinentComponent;
+  let fixture: ComponentFixture<ContinentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DogBreedClassifierComponent ]
+      declarations: [ ContinentComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DogBreedClassifierComponent);
+    fixture = TestBed.createComponent(ContinentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -9,8 +9,8 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'project',
-    loadChildren: () => import('./project/project.module').then((module) => module.ProjectModule),
+    path: 'games',
+    loadChildren: () => import('./games/games.module').then((module) => module.GamesModule),
   },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' },
