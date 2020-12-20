@@ -10,7 +10,6 @@ import { MyErrorStateMatcher } from 'src/app/services/my-error-state-matcher.ser
 })
 export class ContinentComponent implements OnInit {
   playerDetailForm;
-  gameStarted = false;
   timerRef;
   timeLapsed: number;
   currentTime;
@@ -48,11 +47,9 @@ export class ContinentComponent implements OnInit {
   }
 
   getArea(area) {
-    this.noOfClick+=1;
     if(this.gameVariable.data[this.gameVariable.currentIndex].name==area){
       if( this.gameVariable.currentIndex==5){
         let dialogRef = this.dialog.open(this.callAPIDialog,{ disableClose: true });
-        console.log('time', this.currentTime);
         this.clearTimer();
       } else {
         this.result="That's the correct answer."
@@ -60,13 +57,13 @@ export class ContinentComponent implements OnInit {
         this.gameVariable.currentItem=this.gameVariable.data[this.gameVariable.currentIndex];
       }
     } else {
+      this.noOfClick+=1;
       this.result="That's not the correct answer."
     }
   }
   startGame() {
     debugger
     if (this.playerDetailForm.valid) {
-      console.log(this.playerDetailForm);
       this.startTimer();
       this.gameEngine();
     }
@@ -129,7 +126,6 @@ export class ContinentComponent implements OnInit {
   reset(){
     this.noOfClick=0;
     this.playerDetailForm.reset();
-    this.gameStarted = false;
     this.timerRef=null;
     this.timeLapsed=null;
     this.currentTime=null;
