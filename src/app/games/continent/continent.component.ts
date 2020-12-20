@@ -62,7 +62,6 @@ export class ContinentComponent implements OnInit {
     }
   }
   startGame() {
-    debugger
     if (this.playerDetailForm.valid) {
       this.startTimer();
       this.gameEngine();
