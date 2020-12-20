@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { HttpService } from 'src/app/services/http.service';
 import { MyErrorStateMatcher } from 'src/app/services/my-error-state-matcher.service';
 
 @Component({
@@ -37,7 +38,8 @@ export class ContinentComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public matcher: MyErrorStateMatcher,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private httpService:HttpService
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +51,7 @@ export class ContinentComponent implements OnInit {
   getArea(area) {
     if(this.gameVariable.data[this.gameVariable.currentIndex].name==area){
       if( this.gameVariable.currentIndex==5){
+        this.sendResult();
         let dialogRef = this.dialog.open(this.callAPIDialog,{ disableClose: true });
         this.clearTimer();
       } else {
@@ -139,6 +142,19 @@ export class ContinentComponent implements OnInit {
     };
 
     this.result=null;
+  }
+
+
+  sendResult(){
+    let resultData = {
+      name : this.playerDetailForm.value.name,
+      wrongAnswer: this.noOfClick,
+      timeTaken: this.currentTime
+    };
+
+    this.httpService.postScore(resultData).subscribe(res=>{
+
+    });
   }
 
 }

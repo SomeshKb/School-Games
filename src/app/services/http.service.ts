@@ -1,18 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HttpService {
+  apiUrl = environment.apiUrl;
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient:HttpClient) { }
+  postScore(data): Observable<any> {
+    let url = this.apiUrl + '/player/add';
+    return this.httpClient.post(url, data);
+  }
 
-  postFile(fileToUpload: File): Observable<any> {
-    const endpoint = 'http://127.0.0.1:5000/';
-    const formData: FormData = new FormData();
-    formData.append('file', fileToUpload);
-    return this.httpClient.post(endpoint, formData)
-}
+  getPlayersScore(): Observable<any> {
+    let url = this.apiUrl + '/player/all';
+    return this.httpClient.get(url);
+  }
 }
