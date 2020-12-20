@@ -1,0 +1,13 @@
+<div class="container">
+
+<h2  class="heading">Dog Breed Classifier</h2>
+<div class="card-container">
+  <mat-card class="card" >
+    <img mat-card-image [src]="url" class="image-preview">
+    <mat-card-actions>
+      <input type="file" class="foo" (change)="onSelectFile($event)">
+    </mat-card-actions>
+  </mat-card>
+</div>
+<h2 *ngIf="breedName"  class="heading">{{breedName}}</h2>
+</div>
