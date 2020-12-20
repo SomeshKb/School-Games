@@ -9,6 +9,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AnimationTypingDirective } from './shared/directive/animation-typing.directive';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { AnimationTypingDirective } from './shared/directive/animation-typing.di
     MaterialModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+      {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
